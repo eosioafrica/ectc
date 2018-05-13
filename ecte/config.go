@@ -10,6 +10,8 @@ import (
 
 func init(){
 
+	viper.SetDefault("app.name", "ECTE")
+
 	viper.SetDefault("CMDMkDir", "/bin/mkdir")
 	viper.SetDefault("CMDUserAdd", "/usr/sbin/useradd")
 	viper.SetDefault("CMDUserMod", "/usr/sbin/usermod")
@@ -62,16 +64,7 @@ func SetServiceDefault()  {
 
 
 func(env *Environment) GetDirsToCreate() []string {
-/*
-	vbox := fmt.Sprintf("%s/%s", viper.GetString("directories.pwd"), viper.GetString("directories.virtualbox"))
-	assets := fmt.Sprintf("%s/%s", viper.GetString("directories.pwd"), viper.GetString("directories.assets"))
-	bin := fmt.Sprintf("%s/%s", viper.GetString("directories.pwd"), viper.GetString("directories.bin"))
 
-	// Set fully qualified folder path for app ready use.
-	viper.SetDefault("directories.virtualbox.full", vbox)
-	viper.SetDefault("directories.assets.full", assets)
-	viper.SetDefault("directories.bin.full", bin)
-*/
 	elements := []string{ viper.GetString("directories.virtualbox.full"),
 		viper.GetString("directories.assets.full"), viper.GetString("directories.bin.full") }
 

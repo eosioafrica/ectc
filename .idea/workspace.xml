@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="053d6a59-772f-4ea9-bd0a-547638e9796a" name="Default" comment="" />
+    <list default="true" id="053d6a59-772f-4ea9-bd0a-547638e9796a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecte/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ecte/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecte/seed.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ecte/seed.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecte/seed_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ecte/seed_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecte/shell.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ecte/shell.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../main.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,20 +21,8 @@
       <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assets_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ecte/assets_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#19#108#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="133">
+              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -35,8 +30,8 @@
       <file leaf-file-name="assets.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/assets.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="300">
+              <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -44,8 +39,8 @@
       <file leaf-file-name="seed.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/seed.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+            <state relative-caret-position="184">
+              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
                 <element signature="e#14#57#0" expanded="true" />
               </folding>
@@ -56,30 +51,10 @@
       <file leaf-file-name="seed_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/seed_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shell_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ecte/shell_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="12" selection-start-column="12" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="env_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ecte/env_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="55" column="8" selection-start-line="54" selection-start-column="4" selection-end-line="56" selection-end-column="6" />
+            <state relative-caret-position="315">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding>
-                <element signature="n#!!block;n#TestEnvironment_AddUserToSudoers#0" />
-                <element signature="n#!!block;n#TestEnvironment_CreateAppDirectories#0" />
-                <element signature="n#!!block;n#TestEnvironment_DestroyEnvironment#0" />
+                <element signature="e#19#76#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +63,8 @@
       <file leaf-file-name="env.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/env.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="133">
+              <caret line="165" column="24" selection-start-line="165" selection-start-column="24" selection-end-line="165" selection-end-column="24" />
               <folding>
                 <element signature="n#!!block;n#New#0" />
                 <element signature="n#!!block;n#CreateUser#0" />
@@ -119,26 +94,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ecte/common.go">
+      <file leaf-file-name="shell_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ecte/shell_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="64" column="27" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="27" />
+            <state>
+              <caret column="12" selection-start-column="12" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="env_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ecte/env_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="71" selection-start-line="70" selection-start-column="4" selection-end-line="74" selection-end-column="5" />
               <folding>
-                <element signature="e#14#46#0" expanded="true" />
+                <element signature="n#!!block;n#TestEnvironment_AddUserToSudoers#0" />
+                <element signature="n#!!block;n#TestEnvironment_CreateDirectory#0" />
+                <element signature="n#!!block;n#TestEnvironment_DestroyEnvironment#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shell.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shell.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/shell.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="350">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="e#14#74#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="virtualbox.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../plugin/virtualbox.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-990">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#16#88#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vm.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../plugin/vm.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="119" column="1" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -194,17 +201,17 @@
         <option value="$PROJECT_DIR$/../ecte/shell_test.go" />
         <option value="$PROJECT_DIR$/../ecte/config_test.go" />
         <option value="$PROJECT_DIR$/../ecte/env_test.go" />
-        <option value="$PROJECT_DIR$/../ecte/config.go" />
         <option value="$PROJECT_DIR$/../ecte/assets_test.go" />
         <option value="$PROJECT_DIR$/../ecte/hello.sh" />
         <option value="$PROJECT_DIR$/../hello.sh" />
-        <option value="$PROJECT_DIR$/../main.go" />
         <option value="$PROJECT_DIR$/../ecte/assets.go" />
         <option value="$PROJECT_DIR$/../ecte/env.go" />
-        <option value="$PROJECT_DIR$/../ecte/shell.go" />
         <option value="$PROJECT_DIR$/../ecte/common.go" />
-        <option value="$PROJECT_DIR$/../ecte/seed.go" />
         <option value="$PROJECT_DIR$/../ecte/seed_test.go" />
+        <option value="$PROJECT_DIR$/../main.go" />
+        <option value="$PROJECT_DIR$/../ecte/config.go" />
+        <option value="$PROJECT_DIR$/../ecte/shell.go" />
+        <option value="$PROJECT_DIR$/../ecte/seed.go" />
       </list>
     </option>
   </component>
@@ -220,7 +227,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="73" />
     <option name="y" value="27" />
-    <option name="width" value="1255" />
+    <option name="width" value="1245" />
     <option name="height" value="375" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -262,11 +269,6 @@
               <item name="ecte" type="462c0819:PsiDirectoryNode" />
               <item name="plugin" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecte" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -278,7 +280,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../khosimorafo/assets" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -299,7 +301,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestEnvironment_GetDirsToCreate in github.com/eosioafrica/ecte/ecte">
+  <component name="RunManager" selected="Go Test.TestEnvironment_SeederHandler in github.com/eosioafrica/ecte/ecte">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ecte" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -342,14 +344,27 @@
       <filePath value="$PROJECT_DIR$/" />
       <pattern value="^TestEnvironment_GetDirsToCreate$" />
     </configuration>
+    <configuration name="TestEnvironment_SeederHandler in github.com/eosioafrica/ecte/ecte" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="ecte" />
+      <working_directory value="$PROJECT_DIR$/../ecte" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/eosioafrica/ecte/ecte" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestEnvironment_SeederHandler$" />
+    </configuration>
     <list>
       <item itemvalue="Go Test.TestEnvironment_CreateUser in github.com/eosioafrica/ecte/ecte" />
       <item itemvalue="Go Build.go build main.go" />
       <item itemvalue="Go Test.TestEnvironment_GetApplicationDirectories in github.com/eosioafrica/ecte/ecte" />
       <item itemvalue="Go Test.TestEnvironment_GetDirsToCreate in github.com/eosioafrica/ecte/ecte" />
+      <item itemvalue="Go Test.TestEnvironment_SeederHandler in github.com/eosioafrica/ecte/ecte" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestEnvironment_SeederHandler in github.com/eosioafrica/ecte/ecte" />
         <item itemvalue="Go Test.TestEnvironment_GetDirsToCreate in github.com/eosioafrica/ecte/ecte" />
         <item itemvalue="Go Test.TestEnvironment_GetApplicationDirectories in github.com/eosioafrica/ecte/ecte" />
         <item itemvalue="Go Build.go build main.go" />
@@ -358,9 +373,6 @@
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestEnvironment_GetApplicationDirectories_in_github_com_eosioafrica_ecte_ecte - 2018.05.13 at 10h 13m 16s.xml">
-      <configuration name="TestEnvironment_GetApplicationDirectories in github.com/eosioafrica/ecte/ecte" configurationId="GoTestRunConfiguration" />
-    </history-entry>
     <history-entry file="TestEnvironment_GetApplicationDirectories_in_github_com_eosioafrica_ecte_ecte - 2018.05.13 at 10h 13m 28s.xml">
       <configuration name="TestEnvironment_GetApplicationDirectories in github.com/eosioafrica/ecte/ecte" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -388,12 +400,14 @@
     <history-entry file="TestEnvironment_GetDirsToCreate_in_github_com_eosioafrica_ecte_ecte - 2018.05.13 at 11h 23m 17s.xml">
       <configuration name="TestEnvironment_GetDirsToCreate in github.com/eosioafrica/ecte/ecte" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="TestEnvironment_SeederHandler_in_github_com_eosioafrica_ecte_ecte - 2018.05.13 at 18h 13m 18s.xml">
+      <configuration name="TestEnvironment_SeederHandler in github.com/eosioafrica/ecte/ecte" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.207502" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21867518" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50039905" side_tool="true" weight="0.32189542" />
       <window_info anchor="right" id="Database" order="3" />
@@ -401,9 +415,9 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35784313" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49960095" visible="true" weight="0.32786885" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49960095" visible="true" weight="0.21311475" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.37908497" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41147542" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -421,7 +435,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -584,7 +598,7 @@
           <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
           <folding>
             <element signature="n#!!block;n#TestEnvironment_AddUserToSudoers#0" />
-            <element signature="n#!!block;n#TestEnvironment_CreateAppDirectories#0" />
+            <element signature="n#!!block;n#TestEnvironment_CreateDirectory#0" />
             <element signature="n#!!block;n#TestEnvironment_DestroyEnvironment#0" />
           </folding>
         </state>
@@ -657,20 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../plugin/vm.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1694">
-          <caret line="119" column="1" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../plugin/virtualbox.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/ecte.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -702,16 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#106#161#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../hello.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -726,10 +716,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#106#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ecte/common.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="58" column="56" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+          <folding>
+            <element signature="e#14#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ecte/assets_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <element signature="e#19#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ecte/shell_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ecte/seed_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#19#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/env.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="133">
+          <caret line="165" column="24" selection-start-line="165" selection-start-column="24" selection-end-line="165" selection-end-column="24" />
           <folding>
             <element signature="n#!!block;n#New#0" />
             <element signature="n#!!block;n#CreateUser#0" />
@@ -758,82 +795,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../ecte/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/assets.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="300">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/env_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="55" column="8" selection-start-line="54" selection-start-column="4" selection-end-line="56" selection-end-column="6" />
+        <state relative-caret-position="221">
+          <caret line="71" selection-start-line="70" selection-start-column="4" selection-end-line="74" selection-end-column="5" />
           <folding>
             <element signature="n#!!block;n#TestEnvironment_AddUserToSudoers#0" />
-            <element signature="n#!!block;n#TestEnvironment_CreateAppDirectories#0" />
+            <element signature="n#!!block;n#TestEnvironment_CreateDirectory#0" />
             <element signature="n#!!block;n#TestEnvironment_DestroyEnvironment#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ecte/common.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="64" column="27" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="27" />
-          <folding>
-            <element signature="e#14#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecte/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/seed.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        <state relative-caret-position="184">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding>
             <element signature="e#14#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ecte/shell_test.go">
+    <entry file="file://$PROJECT_DIR$/../ecte/shell.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecte/seed_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecte/assets_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="350">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
-            <element signature="e#19#108#0" expanded="true" />
+            <element signature="e#14#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ecte/shell.go">
+    <entry file="file://$PROJECT_DIR$/../plugin/vm.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="1350">
+          <caret line="119" column="1" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../plugin/virtualbox.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-990">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="e#14#74#0" expanded="true" />
+            <element signature="e#16#88#0" expanded="true" />
           </folding>
         </state>
       </provider>

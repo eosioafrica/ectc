@@ -1,9 +1,9 @@
 package ecte
 
 import (
-	"fmt"
 	"os"
 	"github.com/spf13/viper"
+	"fmt"
 )
 
 /*
@@ -19,7 +19,7 @@ type Seeder struct {
 	err error
 }
 
-func (env *Environment) SeederHandler ()  {
+func (env *Environment) SeederHandler () error  {
 
 	seeder := Seeder{
 
@@ -33,14 +33,23 @@ func (env *Environment) SeederHandler ()  {
 	seeder.RunBashDependencyDownload()
 	seeder.RunBashDependencyInstallation()
 
-	//put a finished logger here
+	if seeder.err == nil {
+
+		fmt.Println(InfoRunBashDependencyInstallationSuccess)
+		return seeder.err
+	}
+
+	return seeder.err
 }
 
 func (seed *Seeder) CheckIfDownloadDirExists() {
 
 	if _, err := os.Stat(viper.GetString("directories.assets.full")); os.IsNotExist(err) {
 
-		seed.err = WrapErrors(ErrAssetDirDoesNotExist)
+		if err := seed.env.CreateAppDirectories(); err != nil{
+
+			seed.err = WrapErrors(ErrCreatingAppDirectories)
+		}
 	}
 }
 
@@ -63,5 +72,4 @@ func (seed *Seeder) RunBashDependencyInstallation() {
 		seed.err = WrapErrors(ErrRunBashDependencyInstallation, err)
 	}
 
-	fmt.Println(InfoRunBashDependencyInstallationSuccess)
 }
