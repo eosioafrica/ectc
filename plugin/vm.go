@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// VirtualMachine represents a VM which can be provisioned using this library.
+// VirtualMachine represents a VBox which can be provisioned using this library.
 type VirtualMachine interface {
 	GetName() string
 	Provision() error
@@ -23,24 +23,24 @@ type VirtualMachine interface {
 }
 
 const (
-	// VMStarting is the state to use when the VM is starting
+	// VMStarting is the state to use when the VBox is starting
 	VMStarting = "starting"
-	// VMRunning is the state to use when the VM is running
+	// VMRunning is the state to use when the VBox is running
 	VMRunning = "running"
-	// VMHalted is the state to use when the VM is halted or shutdown
+	// VMHalted is the state to use when the VBox is halted or shutdown
 	VMHalted = "halted"
-	// VMSuspended is the state to use when the VM is suspended
+	// VMSuspended is the state to use when the VBox is suspended
 	VMSuspended = "suspended"
-	// VMPending is the state to use when the VM is waiting for action to complete
+	// VMPending is the state to use when the VBox is waiting for action to complete
 	VMPending = "pending"
-	// VMError is the state to use when the VM is in error state
+	// VMError is the state to use when the VBox is in error state
 	VMError = "error"
-	// VMUnknown is the state to use when the VM is unknown state
+	// VMUnknown is the state to use when the VBox is unknown state
 	VMUnknown = "unknown"
 )
 
 var (
-	// ErrVMNoIP is returned when a newly provisoned VM does not get an IP address.
+	// ErrVMNoIP is returned when a newly provisoned VBox does not get an IP address.
 	ErrVMNoIP = errors.New("error getting a new IP for the virtual machine")
 
 	// ErrVMBootTimeout is returned when a timeout occurs waiting for a vm to boot.
@@ -52,41 +52,44 @@ var (
 	// ErrFailedToGetNICS is returned when no NICS can be found on the vm
 	ErrFailedToGetNICS = errors.New("failed to get interfaces for vm")
 
-	// ErrStartingVM is returned when the VM cannot be started
-	ErrStartingVM = errors.New("error starting VM")
+	// ErrStartingVM is returned when the VBox cannot be started
+	ErrStartingVM = errors.New("error starting VBox")
 
-	// ErrCreatingVM is returned when the VM cannot be created
-	ErrCreatingVM = errors.New("error creating VM")
+	// ErrCreatingHD is returned when the VBox cannot be created
+	ErrCreatingHD = errors.New("error creating HS")
 
-	// ErrStartingVM is returned when the VM cannot be started
+	// ErrCreatingVM is returned when the VBox cannot be created
+	ErrCreatingVM = errors.New("error creating VBox")
+
+	// ErrStartingVM is returned when the VBox cannot be started
 	ErrCreatingStorage = errors.New("error creating vm storage")
 
-	// ErrCreatingVM is returned when the VM cannot be created
+	// ErrCreatingVM is returned when the VBox cannot be created
 	ErrAttachingStorage = errors.New("error attaching vm to storage device")
 
-	// ErrStoppingVM is returned when the VM cannot be stopped
-	ErrStoppingVM = errors.New("error stopping VM")
+	// ErrStoppingVM is returned when the VBox cannot be stopped
+	ErrStoppingVM = errors.New("error stopping VBox")
 
-	// ErrDeletingVM is returned when the VM cannot be deleted
-	ErrDeletingVM = errors.New("error deleting VM")
+	// ErrDeletingVM is returned when the VBox cannot be deleted
+	ErrDeletingVM = errors.New("error deleting VBox")
 
-	// ErrVMInfoFailed is returned when the VM cannot be deleted
-	ErrVMInfoFailed = errors.New("error getting information about VM")
+	// ErrVMInfoFailed is returned when the VBox cannot be deleted
+	ErrVMInfoFailed = errors.New("error getting information about VBox")
 
-	// ErrVMStateFailed is returned when no state can be parsed for the VM
-	ErrVMStateFailed = errors.New("error getting the state of the VM")
+	// ErrVMStateFailed is returned when no state can be parsed for the VBox
+	ErrVMStateFailed = errors.New("error getting the state of the VBox")
 
-	// ErrSourceNotSpecified is returned when no source is specified for the VM
+	// ErrSourceNotSpecified is returned when no source is specified for the VBox
 	ErrSourceNotSpecified = errors.New("source not specified")
 
-	// ErrDestNotSpecified is returned when no destination is specified for the VM
+	// ErrDestNotSpecified is returned when no destination is specified for the VBox
 	ErrDestNotSpecified = errors.New("source not specified")
 
-	// ErrSuspendingVM is returned when the VM cannot be suspended
-	ErrSuspendingVM = errors.New("error suspending the VM")
+	// ErrSuspendingVM is returned when the VBox cannot be suspended
+	ErrSuspendingVM = errors.New("error suspending the VBox")
 
-	// ErrResumingVM is returned when the VM cannot be resumed
-	ErrResumingVM = errors.New("error resuming the VM")
+	// ErrResumingVM is returned when the VBox cannot be resumed
+	ErrResumingVM = errors.New("error resuming the VBox")
 
 	// ErrNotImplemented is returned when the operation is not implemented
 	ErrNotImplemented = errors.New("operation not implemented")
@@ -97,13 +100,22 @@ var (
 	// ErrResumeNotSupported is returned when vm.Resume() is called, but not supported.
 	ErrResumeNotSupported = errors.New("resume action not supported")
 
-	InfoWaitingForVMSwitchOff = errors.New("waiting for the VM to switch off...")
+	InfoWaitingForVMSwitchOff = errors.New("waiting for the VBox to switch off...")
 
-	InfoSuccessfulVMSwitchOff = errors.New("VM has been successfully switched off...")
+	InfoSuccessfulVMSwitchOff = errors.New("VBox has been successfully switched off...")
 
-	InfoAttemptVMDestroy = errors.New("attempting to destroy VM and delete all artifacts...")
+	InfoAttemptVMDestroy = errors.New("attempting to destroy VBox and delete all artifacts...")
 
-	InfoSuccessfulVMDestroy = errors.New("VM has been successfully destroyed...")
+	InfoSuccessfulVMDestroy = errors.New("VBox has been successfully destroyed...")
+
+	// ErrAllocatingMemory is returned when the VBox cannot be created
+	ErrAllocatingMemory = errors.New("Failed to allocate memory to machine. ")
+
+	// ErrAssigningMAC is returned when the VBox cannot be created
+	ErrAssigningMAC = errors.New("Failed to assign mac address to machine. ")
+
+	// ErrAllocatingMemory is returned when the VBox cannot be created
+	ErrAllocatingBootSequence = errors.New("Failed to complete boot sequenc allocation. ")
 
 )
 

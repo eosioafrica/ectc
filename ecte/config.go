@@ -71,6 +71,22 @@ func(env *Environment) GetDirsToCreate() []string {
 	return elements
 }
 
+func(env *Environment) GetAssetsFullPath() ( string, error ) {
+
+	return "/home/khosi/go/src/github.com/eosioafrica/ecte/assets", nil
+	//return viper.GetString("directories.assets.full"), nil
+}
+
+func(env *Environment) GetVirtualBoxFullPath() ( string, error ) {
+
+	return viper.GetString("directories.virtualbox.full"), nil
+}
+
+func(env *Environment) GetBinFullPath() ( string, error ) {
+
+	return viper.GetString("directories.bin.full"), nil
+}
+
 
 
 

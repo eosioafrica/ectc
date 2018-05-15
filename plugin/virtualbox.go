@@ -8,6 +8,8 @@ import (
 	"strings"
 	"regexp"
 	"time"
+	"errors"
+	"strconv"
 )
 
 // VBOXMANAGE is a hardcoded path to VBoxManage to fall back to when it is not
@@ -27,13 +29,14 @@ var (
 	nicRegexp       = regexp.MustCompile(`^NIC \d\d?:`)
 )
 
-// Config represents a config for a VirtualBox VM
-type Config struct {
+// MachineConfig represents a config for a VirtualBox VBox
+type MachineConfig struct {
 
 	Disk  		int
 	Memory    	int
-	NICs 		[]NIC
-	Storage		[]Storage
+	NICs 		*[]NIC
+	Storage		*[]Storage
+	BootSeq     *Boot
 }
 
 // Backing represents a backing for VirtualBox NIC
@@ -42,13 +45,13 @@ type Backing int
 // NIC represents a Virtualbox NIC
 type NIC struct {
 
-	Idx         int			`gorm:"not null;unique"`
+	Idx         int
 	Type       	Backing
 	Device 		string
 	Mac         string
 }
 
-// Represents Storage for the VM
+// Represents Storage for the VBox
 type Storage struct {
 
 	Name		string
@@ -61,29 +64,48 @@ type Storage struct {
 	Medium		string
 }
 
-// boot sequence for a VirtualBox VM
+// boot sequence for a VirtualBox VBox
 type Boot struct {
 
-	Boot1  		string 		`gorm:"default:\"none\""`
-	Boot2  		string 		`gorm:"default:\"none\""`
-	Boot3  		string 		`gorm:"default:\"none\""`
-	Boot4  		string 		`gorm:"default:\"none\""`
+	Boot1  		string
+	Boot2  		string
+	Boot3  		string
+	Boot4  		string
 }
 
-// VM represents a VirtualBox VM
-type VM struct {
+/**
+*
+* Create new environment record.
+ */
+func VirtMachine(name string, path string, iso string, ostype string, config MachineConfig) *VBox {
 
-	Name        string
-	Path        string 		// Install path
-	ISO         string 		// Source Iso Path
-	Config  	Config
-	OSType      string
+	return &VBox{
+
+		Name:   name,
+		Path:   path,
+		ISO:    iso,
+		Config: config,
+		OSType: ostype,
+	}
+}
+
+// VBox represents a VirtualBox machine
+type VBox struct {
+
+	Name   string
+	Path   string 		// Install path
+	ISO    string 		// Source Iso Path
+	OSType string
+	Filename string
+	Config MachineConfig
+
+	Err 		error
 }
 
 // GetName returns the name of the virtual machine
-func (vm *VM) GetName() string {
+func (vbox *VBox) GetName() string {
 
-	return vm.Name
+	return vbox.Name
 }
 
 // Runner is an encapsulation around the vmrun utility.
@@ -98,63 +120,133 @@ type vboxRunner struct {}
 
 var runner Runner = vboxRunner{}
 
-// Will create hard drive and vm, give iso mount points
-func (vm *VM) New() error {
+func (vbox *VBox) Create () error {
 
-	_, err := runner.RunCombinedError("createhd", vm.Name)
+	vbox.CreateMachine()
+	vbox.CreateStorage()
+	vbox.AllocateMemory()
+	vbox.BootSequence()
+	vbox.CreateInterfaces()
+
+	return vbox.Err
+}
+
+// Will create hard drive and vm, give iso mount points
+func (vbox *VBox) CreateMachine () {
+
+	if vbox.Err != nil { return }
+
+	_, err := runner.RunCombinedError("createhd", "--filename", vbox.Filename, "--size", "20000")
 	if err != nil {
-		// If hd is created succesfully, then create VM
-		_, rerr := runner.RunCombinedError("createvm", "--basefolder", vm.Path, "--name",
-			vm.Name, "--ostype", vm.OSType, "--register")
+
+		vbox.Err = WrapErrors(ErrCreatingHD, err)
+
+	} else {
+		// If hd is created succesfully, then create VBox
+		_, rerr := runner.RunCombinedError("createvm", "--basefolder", vbox.Path, "--name",
+			vbox.Name, "--ostype", vbox.OSType, "--register")
 		if rerr != nil {
 			// If neither succeeds, return both errors.
-			return WrapErrors(ErrCreatingVM, err, rerr)
+			vbox.Err = WrapErrors(ErrCreatingVM, err, rerr)
 		}
 	}
-	return nil
 }
-
 
 // Adds and attached storage
-func (vm *VM) StorageCtl() error {
+func (vbox *VBox) CreateStorage() {
 
-	for _, store := range vm.Config.Storage {
+	if vbox.Err != nil { return }
+
+	strg := vbox.Config.Storage
+
+	for _, store := range *strg {
 		// Create hd storage
-		_, err := runner.RunCombinedError("storagectl", vm.Name, "--name", store.Name, "--add", store.Bus)
+		_, err := runner.RunCombinedError("storagectl", vbox.Name, "--name", store.Name, "--add", store.Bus)
 		if err != nil {
 
-			// If storage is created succesfully, then attach to vm
-			_, rerr := runner.RunCombinedError("storageattach", vm.Name, "--storagectl", store.Controller, "--port",
-				string(store.Port), "--device", string(store.Device), "--type", store.Type, "--medium", store.Medium)
-			if rerr != nil {
-				// If neither succeeds, return both errors.
-				return WrapErrors(ErrAttachingStorage, err, rerr)
-			}
+			message := fmt.Sprintf("IDE at %s" , store.Name)
+			vbox.Err =  WrapErrors(ErrAttachingStorage,errors.New(message), err)
+
 		} else {
 
-			return WrapErrors(ErrAttachingStorage, err)
+			// If storage is created succesfully, then attach to vbox
+			_, rerr := runner.RunCombinedError("storageattach", vbox.Name, "--storagectl", store.Name, "--port",
+				"0", "--device", "0", "--type", store.Type, "--medium", store.Medium)
+			if rerr != nil {
+				// If neither succeeds, return both errors.
+				message := fmt.Sprintf("SATA at %s" , store.Name)
+				vbox.Err = WrapErrors(ErrAttachingStorage, errors.New(message), err, rerr)
+			}
 		}
 	}
 
-	return nil
 }
 
-func (vm *VM) InterfaceCtl(){
+func (vbox *VBox) CreateInterfaces(){
 
+	if vbox.Err != nil { return }
 
+	nics := vbox.Config.NICs
+
+	for _, nic := range *nics {
+
+		// Virtualbox indexes start at 1
+		nicLabel := fmt.Sprintf("--nic%d", nic.Idx)
+		macLabel := fmt.Sprintf("--macaddress%d", nic.Idx)
+
+		_, err := runner.RunCombinedError("modifyvm", vbox.Name, nicLabel, nic.Device)
+		if err != nil {
+
+			vbox.Err =  WrapErrors(ErrAttachingStorage, err)
+		}
+
+		_, err = runner.RunCombinedError("modifyvm", vbox.Name, macLabel, nic.Mac)
+		if err != nil {
+
+			vbox.Err =  WrapErrors(ErrAttachingStorage, err)
+		}
+	}
 }
 
-// Destroy powers off the VM and deletes its files from disk.
-func (vm *VM) Destroy() error {
+func (vbox *VBox) AllocateMemory(){
 
-	err := vm.Halt()
+	if vbox.Err != nil { return }
+
+	_, err := runner.RunCombinedError("modifyvm", vbox.Name, "--memory",
+			strconv.Itoa(vbox.Config.Memory), "--vram", "128")
+	if err != nil {
+
+		vbox.Err =  WrapErrors(ErrAllocatingMemory, err)
+	}
+}
+
+func (vbox *VBox) BootSequence()  {
+
+	if vbox.Err != nil { return }
+
+	_, err := runner.RunCombinedError("modifyvm", vbox.Name,
+		"--boot1", vbox.Config.BootSeq.Boot1,
+		"--boot2", vbox.Config.BootSeq.Boot2,
+		"--boot3", vbox.Config.BootSeq.Boot3,
+		"--boot4", vbox.Config.BootSeq.Boot4 )
+
+	if err != nil {
+
+		vbox.Err =  WrapErrors(ErrAllocatingBootSequence, err)
+	}
+}
+
+// Destroy powers off the VBox and deletes its files from disk.
+func (vbox *VBox) Destroy() error {
+
+	err := vbox.Halt()
 	if err != nil {
 		return err
 	}
 
-	// wait for vm to be released from lock.
+	// wait for vbox to be released from lock.
 
-	state, err := vm.GetState()
+	state, err := vbox.GetState()
 	i := 0
 	// This loop continues while "valid" is true.
 	for state != VMHalted {
@@ -162,7 +254,7 @@ func (vm *VM) Destroy() error {
 		fmt.Println(InfoWaitingForVMSwitchOff)
 		time.Sleep(2 * time.Second)
 
-		state, _ = vm.GetState()
+		state, _ = vbox.GetState()
 
 		if (i >= 5 ){
 
@@ -174,7 +266,7 @@ func (vm *VM) Destroy() error {
 	fmt.Println(InfoSuccessfulVMSwitchOff)
 
 	fmt.Println(InfoAttemptVMDestroy)
-	_, err = runner.RunCombinedError("unregistervm", vm.Name, "--delete")
+	_, err = runner.RunCombinedError("unregistervm", vbox.Name, "--delete")
 	if err != nil {
 		return WrapErrors(ErrDeletingVM, err)
 	}
@@ -183,31 +275,31 @@ func (vm *VM) Destroy() error {
 	return nil
 }
 
-// Halt powers off the VM without destroying it
-func (vm *VM) Halt() error {
+// Halt powers off the VBox without destroying it
+func (vbox *VBox) Halt() error {
 
-	state, err := vm.GetState()
+	state, err := vbox.GetState()
 	if err != nil {
 		return err
 	}
 	if state == VMHalted {
 		return nil
 	}
-	_, err = runner.RunCombinedError("controlvm", vm.Name, "poweroff")
+	_, err = runner.RunCombinedError("controlvm", vbox.Name, "poweroff")
 	if err != nil {
 		return WrapErrors(ErrStoppingVM, err)
 	}
 	return nil
 }
 
-// Start powers on the VM
-func (vm *VM) Start() error {
+// Start powers on the VBox
+func (vbox *VBox) Start() error {
 
-	_, err := runner.RunCombinedError("startvm", vm.Name)
+	_, err := runner.RunCombinedError("startvm", vbox.Name)
 	if err != nil {
-		// If the user has paused the VM it reads as halted but the Start
+		// If the user has paused the VBox it reads as halted but the Start
 		// command will fail. Try to resume it as a backup.
-		_, rerr := runner.RunCombinedError("controlvm", vm.Name, "resume")
+		_, rerr := runner.RunCombinedError("controlvm", vbox.Name, "resume")
 		if rerr != nil {
 			// If neither succeeds, return both errors.
 			return WrapErrors(ErrStartingVM, err, rerr)
@@ -216,10 +308,10 @@ func (vm *VM) Start() error {
 	return nil
 }
 
-// GetState gets the power state of the VM being serviced by this driver.
-func (vm *VM) GetState() (string, error) {
+// GetState gets the power state of the VBox being serviced by this driver.
+func (vbox *VBox) GetState() (string, error) {
 
-	stdout, err := runner.RunCombinedError("showvminfo", vm.Name)
+	stdout, err := runner.RunCombinedError("showvminfo", vbox.Name)
 	if err != nil {
 		return "", WrapErrors(ErrVMInfoFailed, err)
 	}
@@ -234,8 +326,6 @@ func (vm *VM) GetState() (string, error) {
 	}
 	return VMUnknown, ErrVMStateFailed
 }
-
-
 
 // Run runs a VBoxManage command.
 func (f vboxRunner) Run(args ...string) (string, string, error) {

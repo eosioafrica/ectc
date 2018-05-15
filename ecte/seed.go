@@ -71,5 +71,4 @@ func (seed *Seeder) RunBashDependencyInstallation() {
 
 		seed.err = WrapErrors(ErrRunBashDependencyInstallation, err)
 	}
-
 }

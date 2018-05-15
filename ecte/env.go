@@ -18,10 +18,8 @@ type Runner interface {
 
 type Environment struct{
 
-
 	SeedBashScript string
-
-
+	AssetsFolder   string
 }
 
 // envRunner implements the Runner interface.
@@ -35,7 +33,8 @@ var runner Runner = envRunner{}
  */
 func New() *Environment {
 
-	return &Environment{}
+	return &Environment{
+	}
 }
 
 func (env *Environment) CreateUser(username string) error {

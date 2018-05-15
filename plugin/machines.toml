@@ -1,0 +1,59 @@
+# Avoid a host name like "xxxxx-yyyyy01.infra.local". For some reason virtualbox does not like the heyphen (-)
+
+[[roles]]
+    name = "consul"
+    disk = 20000
+    memory = 1024
+    ostype = "Linux_64"
+    iso = "ipxe.iso"
+    controllers = ["ide", "sata"]
+    interfaces = ["2-intnet"]
+    boot = ["dvd", "disk", "none", "none" ]
+    [[roles.hosts]]
+        name = "consul01.infra.local"
+        ports = []
+        mac = "080027AB1001"
+    [[roles.hosts]]
+        name = "consul02.infra.local"
+        ports = []
+        mac = "080027AB1002"
+    [[roles.hosts]]
+        name = "consul03.infra.local"
+        ports = []
+        mac = "080027AB1003"
+
+[[roles]]
+    name = "producer"
+    disk = 100000
+    memory = 8192
+    ostype = "Linux_64"
+    iso = "ipxe.iso"
+    controllers = ["ide", "sata"]
+    interfaces = ["2-intnet"]
+    boot = ["dvd", "disk", "none", "none" ]
+    [[roles.hosts]]
+        name = "producer01.infra.local"
+        ports = []
+        mac = "080027AB1010"
+    [[roles.hosts]]
+        name = "producer02.infra.local"
+        ports = []
+        mac = "080027AB1011"
+
+[[storage]]
+    name = "IDE Controller"
+    bus = "ide"
+    port = 0
+    device = 0
+    type = "dvddrive"
+    controller = ""
+    medium = ""
+
+[[storage]]
+    name = "SATA Controller"
+    bus = "sata"
+    port = 0
+    device = 0
+    type = "hdd"
+    controller = "IntelAHCI"
+    medium = ""
