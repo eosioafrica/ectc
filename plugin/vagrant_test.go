@@ -1,15 +1,11 @@
-package main
+package plugin_test
 
 import (
-
-	"github.com/eosioafrica/ecte/ecte"
-	"fmt"
+	"testing"
 	"github.com/eosioafrica/ecte/plugin"
 )
 
-var env ecte.Environment
-
-func main() {
+func TestVagrant_Provision(t *testing.T) {
 
 	dir := "/home/khosi/go/src/github.com/eosioafrica/ecte/assets"
 
@@ -22,13 +18,7 @@ func main() {
 
 	if vagrant.Err != nil {
 
-		fmt.Println(vagrant.Err)
+		t.Errorf("Failed to create vagrant box : ", vagrant.Err)
 		return
 	}
-
-
-	fmt.Println("Cluster provisioning has been successful.............")
-
 }
-
-

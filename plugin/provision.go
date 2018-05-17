@@ -58,6 +58,18 @@ func (provisioner *Provisioner) Provision() error {
 	return nil
 }
 
+func (provisioner *Provisioner) RunVagrant(){
+
+	binDir, _ := provisioner.Env.GetBinFullPath()
+
+	vagrant := Vag{
+
+		Path: binDir,
+	}
+
+	vagrant.Provision()
+}
+
 func (provisioner *Provisioner) GenerateHostList(machines *[]VBox) {
 
 

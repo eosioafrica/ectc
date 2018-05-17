@@ -73,22 +73,6 @@ type Boot struct {
 	Boot4  		string
 }
 
-/**
-*
-* Create new environment record.
- */
-func VirtMachine(name string, path string, iso string, ostype string, config MachineConfig) *VBox {
-
-	return &VBox{
-
-		Name:   name,
-		Path:   path,
-		ISO:    iso,
-		Config: config,
-		OSType: ostype,
-	}
-}
-
 // VBox represents a VirtualBox machine
 type VBox struct {
 
