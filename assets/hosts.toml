@@ -10,15 +10,15 @@
     interfaces = ["2-intnet"]
     boot = ["dvd", "disk", "none", "none" ]
     [[roles.hosts]]
-        name = "consul01.infra.local"
+        name = "master-1.infra.local"
         ports = []
         mac = "080027AB1001"
     [[roles.hosts]]
-        name = "consul02.infra.local"
+        name = "master-2.infra.local"
         ports = []
         mac = "080027AB1002"
     [[roles.hosts]]
-        name = "consul03.infra.local"
+        name = "master-3.infra.local"
         ports = []
         mac = "080027AB1003"
 
@@ -32,11 +32,11 @@
     interfaces = ["2-intnet"]
     boot = ["dvd", "disk", "none", "none" ]
     [[roles.hosts]]
-        name = "producer01.infra.local"
+        name = "worker-1.infra.local"
         ports = []
         mac = "080027AB1010"
     [[roles.hosts]]
-        name = "producer02.infra.local"
+        name = "worker-2.infra.local"
         ports = []
         mac = "080027AB1011"
 

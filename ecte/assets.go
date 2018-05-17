@@ -5,13 +5,12 @@ import (
 	"fmt"
 	"time"
 	"os"
-	"github.com/spf13/viper"
 	"net/url"
 )
 
 func (env *Environment) DownloadSeedBashInstallAsset() error {
 
-	_, err := url.ParseRequestURI(viper.GetString("assets.bash_seed"))
+	_, err := url.ParseRequestURI(env.Config.App.Seed)
 	if err != nil {
 
 		return WrapErrors(ErrDownloadingBashSeedAsset, err)
@@ -19,8 +18,8 @@ func (env *Environment) DownloadSeedBashInstallAsset() error {
 
 	// create client
 	client := grab.NewClient()
-	req, _ := grab.NewRequest(viper.GetString("directories.assets.full"),
-		viper.GetString("assets.bash_seed"))
+	req, _ := grab.NewRequest(env.Config.Dirs.AssetsFull,
+		env.Config.App.Seed)
 
 	// start download
 	fmt.Printf("Downloading %v...\n", req.URL())

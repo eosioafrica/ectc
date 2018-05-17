@@ -55,8 +55,8 @@ var Config Configuration
 func init()  {
 
 	v := viper.New()
-	v.SetConfigName("machines")
-	v.AddConfigPath("/home/khosi/go/src/github.com/eosioafrica/ecte/plugin/")
+	v.SetConfigName("hosts")
+	v.AddConfigPath("/home/khosi/go/src/github.com/eosioafrica/ecte/assets/")
 
 	err := v.ReadInConfig()
 	if err != nil {

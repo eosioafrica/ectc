@@ -5,8 +5,6 @@ import (
 	"os"
 	"bytes"
 	"fmt"
-	"github.com/spf13/viper"
-	"log"
 )
 
 // Runner is an encapsulation around the vmrun utility.
@@ -20,6 +18,8 @@ type Environment struct{
 
 	SeedBashScript string
 	AssetsFolder   string
+
+	Config 	*EnviroConfig
 }
 
 // envRunner implements the Runner interface.
@@ -34,6 +34,8 @@ var runner Runner = envRunner{}
 func New() *Environment {
 
 	return &Environment{
+
+		Config: &EnvConfig,
 	}
 }
 
@@ -41,7 +43,7 @@ func (env *Environment) CreateUser(username string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(UserAdd()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.UserAdd); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -62,7 +64,7 @@ func (env *Environment) RemoveUser(username string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(UserDel()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.UserDel); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -83,7 +85,7 @@ func (env *Environment) CreateGroup(groupname string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(GroupAdd()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.GroupAdd); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -104,7 +106,7 @@ func (env *Environment) RemoveGroup(groupname string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(GroupDel()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.GroupDel); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -125,7 +127,7 @@ func (env *Environment) AddUserToGroup(username string, group string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(UserMod()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.UserMod); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -146,7 +148,7 @@ func (env *Environment) AddUserToSudoers(username string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(Echo()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.Echo); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -184,7 +186,7 @@ func (env *Environment) CreateDirectory(dir string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(MkDir()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.MkDir); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -204,7 +206,7 @@ func (env *Environment) RemoveDirectory(dir string) error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(RM()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.RM); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -224,7 +226,7 @@ func (env *Environment) DestroyEnvironment() error {
 
 	var binPath string
 
-	if path, err := exec.LookPath(RM()); err != nil {
+	if path, err := exec.LookPath(env.Config.Bash.RM); err != nil {
 
 		return WrapErrors(ErrOSCommand, err)
 	} else {
@@ -233,7 +235,7 @@ func (env *Environment) DestroyEnvironment() error {
 	}
 
 
-	_, err1 := runner.RunCombinedError(binPath, "-r", DirContent())
+	_, err1 := runner.RunCombinedError(binPath, "-r", env.Config.Dirs.Content)
 	if err1 != nil {
 
 		return WrapErrors(ErrDeletingEnvironment, err1)
@@ -268,6 +270,8 @@ func (f envRunner) Run(binary string, args ...string) (string, string, error) {
 }
 
 func (env envRunner) checkIfSudoUser(){}
+
+/*
 
 func MkDir () string {
 
@@ -342,3 +346,4 @@ func DirBin () string {
 	}
 	return viper.GetString("directories.bin")
 }
+*/

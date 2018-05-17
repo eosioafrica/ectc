@@ -5,86 +5,99 @@ import (
 	"github.com/spf13/viper"
 	"os"
 	"fmt"
+	"github.com/mitchellh/go-homedir"
 )
 
+type Application struct{
+
+	Name   			string 			`mapstructure:"name"`
+	Seed   			string    		`mapstructure:"bashseed"`
+}
+
+type Bash struct{
+
+	MkDir   		string 			`mapstructure:"mkdir"`
+	UserAdd   		string    		`mapstructure:"useradd"`
+	UserMod   		string 			`mapstructure:"usermod"`
+	UserDel   		string    		`mapstructure:"userdel"`
+	GroupAdd   		string 			`mapstructure:"groupadd"`
+	GroupDel   		string    		`mapstructure:"groupdel"`
+	Echo   			string 			`mapstructure:"echo"`
+	RM   			string    		`mapstructure:"rm"`
+}
+
+type Directories struct{
+
+	Content   			string 			`mapstructure:"content"`
+	VirtualBox   		string    		`mapstructure:"virtualbox"`
+	Assets   			string 			`mapstructure:"assets"`
+	Bin		   			string    		`mapstructure:"bin"`
+
+	VirtualBoxFull 		string
+	AssetsFull 			string
+	BinFull	   			string
+	ProvisionersFull	string
+}
+
+
+type EnviroConfig struct {
+
+	App 			Application		 		`mapstructure:"application"`
+	Bash  			Bash 					`mapstructure:"bash"`
+	Dirs  			Directories 			`mapstructure:"directories"`
+
+	PWD				string
+	Home  			string
+}
+
+var EnvConfig EnviroConfig
 
 func init(){
 
-	viper.SetDefault("app.name", "ECTE")
+	v := viper.New()
+	v.SetConfigName("environment")
+	v.AddConfigPath("/home/khosi/go/src/github.com/eosioafrica/ecte/assets/")
 
-	viper.SetDefault("CMDMkDir", "/bin/mkdir")
-	viper.SetDefault("CMDUserAdd", "/usr/sbin/useradd")
-	viper.SetDefault("CMDUserMod", "/usr/sbin/usermod")
-	viper.SetDefault("CMDUserDel", "/usr/sbin/userdel")
-	viper.SetDefault("CMDGroupAdd", "/usr/sbin/groupadd")
-	viper.SetDefault("CMDGroupDel", "/usr/sbin/groupdel")
+	err := v.ReadInConfig()
+	if err != nil {
+		fmt.Println("Named config file not found...")
+		return
+	}
 
-	viper.SetDefault("CMDEcho", "/bin/echo")
-	viper.SetDefault("CMDRM", "/bin/rm")
+	if err := v.Unmarshal(&EnvConfig); err != nil {
 
-	viper.SetDefault("directories.content", ".ecte")
-	viper.SetDefault("directories.virtualbox", ".ecte/virtualbox")
-	viper.SetDefault("directories.assets", ".ecte/assets")
-	viper.SetDefault("directories.bin", ".ecte/bin")
-
-	viper.SetDefault("assets.bash_seed",
-		"https://raw.githubusercontent.com/khosimorafo/assets/master/get_dependency_installer.sh")
-
+		fmt.Printf("couldn't read config: %s", err)
+	}
 	SetServiceDefault()
 }
 
-func (env *Environment) GetDefaultConfig() string {
-
-	return viper.GetString("CMDRM")
-}
 
 func SetServiceDefault()  {
 
-	pwd, err := os.Getwd()
+	home, err := homedir.Dir()
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
-	fmt.Println(InfoEnvironmentBaseDirectory, pwd)
+	EnvConfig.Home = home
 
-	viper.SetDefault("directories.pwd", pwd)
+	fmt.Println(InfoEnvironmentBaseDirectory, EnvConfig.Home)
 
-	vbox := fmt.Sprintf("%s/%s", viper.GetString("directories.pwd"), viper.GetString("directories.virtualbox"))
-	assets := fmt.Sprintf("%s/%s", viper.GetString("directories.pwd"), viper.GetString("directories.assets"))
-	bin := fmt.Sprintf("%s/%s", viper.GetString("directories.pwd"), viper.GetString("directories.bin"))
+	EnvConfig.Dirs.VirtualBoxFull = fmt.Sprintf("%s/%s", EnvConfig.Home, EnvConfig.Dirs.VirtualBox)
+	EnvConfig.Dirs.AssetsFull = fmt.Sprintf("%s/%s", EnvConfig.Home, EnvConfig.Dirs.Assets)
+	EnvConfig.Dirs.BinFull = fmt.Sprintf("%s/%s", EnvConfig.Home, EnvConfig.Dirs.Bin)
+	EnvConfig.Dirs.ProvisionersFull = fmt.Sprintf("%s/%s", EnvConfig.Dirs.AssetsFull, "provisioners")
 
-	// Set fully qualified folder path for app ready use.
-	viper.SetDefault("directories.virtualbox.full", vbox)
-	viper.SetDefault("directories.assets.full", assets)
-	viper.SetDefault("directories.bin.full", bin)
 }
-
-
 
 
 func(env *Environment) GetDirsToCreate() []string {
 
-	elements := []string{ viper.GetString("directories.virtualbox.full"),
-		viper.GetString("directories.assets.full"), viper.GetString("directories.bin.full") }
+	dirs := []string{EnvConfig.Dirs.VirtualBoxFull,
+		EnvConfig.Dirs.AssetsFull, EnvConfig.Dirs.BinFull}
 
-	return elements
-}
-
-func(env *Environment) GetAssetsFullPath() ( string, error ) {
-
-	return "/home/khosi/go/src/github.com/eosioafrica/ecte/assets", nil
-	//return viper.GetString("directories.assets.full"), nil
-}
-
-func(env *Environment) GetVirtualBoxFullPath() ( string, error ) {
-
-	return viper.GetString("directories.virtualbox.full"), nil
-}
-
-func(env *Environment) GetBinFullPath() ( string, error ) {
-
-	return viper.GetString("directories.bin.full"), nil
+	return dirs
 }
 
 

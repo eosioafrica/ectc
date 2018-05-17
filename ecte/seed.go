@@ -2,7 +2,6 @@ package ecte
 
 import (
 	"os"
-	"github.com/spf13/viper"
 	"fmt"
 )
 
@@ -44,7 +43,7 @@ func (env *Environment) SeederHandler () error  {
 
 func (seed *Seeder) CheckIfDownloadDirExists() {
 
-	if _, err := os.Stat(viper.GetString("directories.assets.full")); os.IsNotExist(err) {
+	if _, err := os.Stat(seed.env.Config.Dirs.AssetsFull); os.IsNotExist(err) {
 
 		if err := seed.env.CreateAppDirectories(); err != nil{
 

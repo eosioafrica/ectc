@@ -3,18 +3,21 @@ package plugin_test
 import (
 	"testing"
 	"github.com/eosioafrica/ecte/plugin"
+	"github.com/eosioafrica/ecte/ecte"
 )
 
 func TestVagrant_Provision(t *testing.T) {
 
-	dir := "/home/khosi/go/src/github.com/eosioafrica/ecte/assets"
+	dir := ecte.EnvConfig.Dirs.ProvisionersFull
 
 	vagrant := plugin.Vag{
 
 		Path: dir,
 	}
 
-	vagrant.Provision()
+	t.Log("The righteous path is : ", vagrant.Path)
+
+	//vagrant.Provision()
 
 	if vagrant.Err != nil {
 

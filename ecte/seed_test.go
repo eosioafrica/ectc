@@ -3,14 +3,13 @@ package ecte_test
 import (
 	"testing"
 	"github.com/eosioafrica/ecte/ecte"
-	"github.com/spf13/viper"
 )
 
 func TestEnvironment_SeederHandler(t *testing.T) {
 
 	en :=  ecte.New()
 
-	dir := viper.GetString("directories.assets.full")
+	dir := en.Config.Dirs.AssetsFull
 
 	t.Log("Attempt to create : ", dir)
 /*

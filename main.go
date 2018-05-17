@@ -11,7 +11,8 @@ var env ecte.Environment
 
 func main() {
 
-	dir := "/home/khosi/go/src/github.com/eosioafrica/ecte/assets"
+	dir := "/home/khosi/go/src/github.com/eosioafrica/ecte/assets/provisioners"
+
 
 	vagrant := plugin.Vag{
 

@@ -2,7 +2,6 @@ package ecte_test
 
 import (
 	"testing"
-	"github.com/spf13/viper"
 	"github.com/eosioafrica/ecte/ecte"
 	"os"
 )
@@ -11,7 +10,7 @@ func TestEnvironment_GetAsset(t *testing.T) {
 
 	en :=  ecte.New()
 
-	dir := viper.GetString("directories.assets.full")
+	dir := en.Config.Dirs.AssetsFull
 
 	t.Log("Attempt to create : %s", dir)
 

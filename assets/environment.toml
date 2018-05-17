@@ -1,0 +1,19 @@
+[application]
+    name = "ECTE"
+    bashseed = "https://raw.githubusercontent.com/khosimorafo/assets/master/get_dependency_installer.sh"
+
+[bash]
+    mkdir = "/bin/mkdir"
+    useradd = "/usr/sbin/useradd"
+    usermod = "/usr/sbin/usermod"
+    userdel = "/usr/sbin/userdel"
+    groupadd = "/usr/sbin/groupadd"
+    groupdel = "/usr/sbin/groupdel"
+    echo = "/bin/echo"
+    rm = "/bin/rm"
+
+[directories]
+    content = ".ecte"
+    virtualbox = ".ecte/virtualbox"
+    assets = ".ecte/assets"
+    bin = ".ecte/bin"

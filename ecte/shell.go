@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"github.com/spf13/viper"
 )
 
 func (env *Environment) BashDependencyInstaller() error {
@@ -20,9 +19,9 @@ func (env *Environment) BashDependencyInstaller() error {
 	}
 
 	arguments := []string { executable,
-		viper.GetString("directories.assets.full"),
-		viper.GetString("directories.bin.full"),
-		viper.GetString("app.name") }
+		env.Config.Dirs.AssetsFull,
+		env.Config.Dirs.BinFull,
+		env.Config.App.Name }
 
 	cmd := exec.Command("bash", arguments...)
 
