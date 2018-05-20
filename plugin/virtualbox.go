@@ -334,7 +334,7 @@ func (f vboxRunner) Run(args ...string) (string, string, error) {
 }
 
 // RunCombinedError runs a VBoxManage command.  The output is stdout and the the
-// combined err/stderr from the command.
+// combined Err/stderr from the command.
 func (f vboxRunner) RunCombinedError(args ...string) (string, error) {
 
 	wout, werr, err := f.Run(args...)

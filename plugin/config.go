@@ -4,6 +4,7 @@ import (
 
 	"github.com/spf13/viper"
 	"fmt"
+	"github.com/eosioafrica/ecte/environment"
 )
 
 type Role struct{
@@ -31,6 +32,7 @@ type Host struct {
 	BootSeq 		[]string		`mapstructure:"boot"`
 
 	ISO             string
+	Filename		string
 }
 
 type StorageController struct {
@@ -52,11 +54,11 @@ type Configuration struct {
 
 var Config Configuration
 
-func init()  {
+func InitialConfig(env *environment.Environment)  {
 
 	v := viper.New()
 	v.SetConfigName("hosts")
-	v.AddConfigPath("/home/khosi/go/src/github.com/eosioafrica/ecte/assets/")
+	v.AddConfigPath(env.Config.Dirs.AssetsFull)
 
 	err := v.ReadInConfig()
 	if err != nil {
@@ -68,5 +70,20 @@ func init()  {
 
 		fmt.Printf("couldn't read config: %s", err)
 	}
-}
 
+	// TODO Reconsider location
+	// Set host ipxe
+	/*
+	for _, role := range Config.Roles {
+
+		for _, host := range role.Hosts {
+
+			host.ISO = fmt.Sprintf("%s/%s", env.Config.Dirs.ProvisionersFull, "ipxe.iso")
+			host.Filename = fmt.Sprintf("%s/%s/%s.%s", env.Config.Dirs.BinFull, host.Name, host.Name, "vdi")
+
+			fmt.Println(host.ISO)
+			fmt.Println(host.Filename)
+		}
+	}*/
+
+}

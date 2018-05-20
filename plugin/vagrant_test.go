@@ -3,21 +3,22 @@ package plugin_test
 import (
 	"testing"
 	"github.com/eosioafrica/ecte/plugin"
-	"github.com/eosioafrica/ecte/ecte"
+	"github.com/eosioafrica/ecte/environment"
 )
 
 func TestVagrant_Provision(t *testing.T) {
 
-	dir := ecte.EnvConfig.Dirs.ProvisionersFull
+	en :=  environment.New()
+	en.CreateDirectory(en.Config.Dirs.ProvisionersFull)
 
 	vagrant := plugin.Vag{
 
-		Path: dir,
+		Path: environment.EnvConfig.Dirs.ProvisionersFull,
 	}
 
 	t.Log("The righteous path is : ", vagrant.Path)
 
-	//vagrant.Provision()
+	vagrant.Provision()
 
 	if vagrant.Err != nil {
 

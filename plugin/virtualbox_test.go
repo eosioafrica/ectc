@@ -101,7 +101,7 @@ func TestVBox_Destroy(t *testing.T) {
 
 func setup()  {
 
-	dir := "/home/khosi/go/src/github.com/eosioafrica/ecte/assets"
+	dir := "/home/khosi/go/src/github.com/eosioafrica/environment/assets"
 	ideMedium = fmt.Sprintf("%s/%s", dir, "ipxe.iso")
 	fileName = fmt.Sprintf("%s/%s/%s.%s", dir, vmName, vmName, "vdi")
 

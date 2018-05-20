@@ -1,18 +1,20 @@
-package main
+package ecte
 
 import (
 
-	"github.com/eosioafrica/ecte/ecte"
+	"github.com/eosioafrica/ecte/environment"
 	"fmt"
 	"github.com/eosioafrica/ecte/plugin"
 )
 
-var env ecte.Environment
+var env environment.Environment
+
+
+
 
 func main() {
 
-	dir := "/home/khosi/go/src/github.com/eosioafrica/ecte/assets/provisioners"
-
+	dir := "/home/khosi/go/src/github.com/eosioafrica/environment/assets/provisioners"
 
 	vagrant := plugin.Vag{
 
@@ -31,5 +33,7 @@ func main() {
 	fmt.Println("Cluster provisioning has been successful.............")
 
 }
+
+
 
 

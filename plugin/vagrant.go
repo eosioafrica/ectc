@@ -18,14 +18,6 @@ type Vag struct {
 	Err 		error
 }
 
-func NewVag (path string) *Vag{
-
-	return &Vag{
-
-		Path: path,
-	}
-}
-
 func (vag *Vag) Provision () {
 
 	vagrant, _ := vagrantutil.NewVagrant(vag.Path)
@@ -56,7 +48,14 @@ end
 `)
 
 	status, _ := vagrant.Status() // prints "NotCreated"
-	fmt.Println(status)
+
+	if status.String() != "NotCreated" {
+
+		fmt.Println("A provisioned environment exists. Please remove it should you want to continue. ")
+		return
+	}
+
+	fmt.Println("Creating provisioner box. This will take a while... ")
 
 	// starts the box
 	output, _ := vagrant.Up()
@@ -66,14 +65,19 @@ end
 		log.Println(line)
 	}
 
-
+	fmt.Println("Box provisioning has been completed. ")
 	// starts the box
-	//output1, _ := vagrant.SSH("ls -al /home")
+	output1, err := vagrant.SSH("ls -al")
 
 	// print the output
-	//for line := range output1 {
-	//	log.Println(line)
-	//}
+	for line := range output1 {
+		log.Println("SSH : ", line)
+	}
+
+	if err != nil {
+
+		log.Println("SSH error : ", err)
+	}
 
 	// stop/halt the box
 	//vagrant.Halt()
