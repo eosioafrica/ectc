@@ -1,11 +1,13 @@
 package ecte
 
 import (
+
 	"github.com/eosioafrica/ecte/environment"
 	"github.com/eosioafrica/ecte/seed"
 	"github.com/eosioafrica/ecte/provision"
 	"os"
 	"fmt"
+	"github.com/sirupsen/logrus"
 )
 
 
@@ -33,6 +35,8 @@ func (ecte *Ecte) Seed (){
 
 	if ecte.Err != nil { return }
 
+	logrus.Info("Downloading seed information.")
+
 	pwd, err := os.Getwd()
 	if err != nil {
 		fmt.Println(err)
@@ -42,6 +46,8 @@ func (ecte *Ecte) Seed (){
 	ecte.Seeder.ExecDir = pwd
 
 	ecte.Err = ecte.Seeder.Seed()
+
+	if ecte.Err ==nil { logrus.Info("Information seeding has been successful.") }
 }
 
 
@@ -49,18 +55,27 @@ func (ecte *Ecte) CreateEnvironment (){
 
 	if ecte.Err != nil { return }
 
+	logrus.Info("Creating new ecte environment.")
+
 	ecte.Err = ecte.Environ.Create(ecte.Seeder.AppDirCreated)
+
+	if ecte.Err ==nil { logrus.Info("New environment created at .", ecte.Seeder.AppDirCreated) }
+
 }
 
 func (ecte *Ecte) Provision (){
 
 	if ecte.Err != nil { return }
 
+	logrus.Info("Starting the provisioning of virtual machines.")
+
 	ecte.Provisioner = provision.New(ecte.Environ)
 
 	ecte.Provisioner.Provision()
 
 	ecte.Err = ecte.Provisioner.Err
+
+	if ecte.Err ==nil { logrus.Info("Successfully provisioned virtual machines.") }
 }
 
 func (ecte *Ecte) Run() {

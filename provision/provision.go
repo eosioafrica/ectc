@@ -43,17 +43,19 @@ func (provisioner *Provisioner) Provision() {
 	if provisioner.Err != nil { return }
 
 	provisioner.CreateHostVMs()
+
+	provisioner.RunVagrant()
 }
 
 func (provisioner *Provisioner) RunVagrant(){
 
 	if provisioner.Err != nil { return }
 
-	binDir := provisioner.Env.Config.Dirs.BinFull
+	provisionerDir := provisioner.Env.Config.Dirs.ProvisionersFull
 
 	vagrant := plugin.Vag{
 
-		Path: binDir,
+		Path: provisionerDir,
 	}
 
 	vagrant.Provision()
@@ -90,10 +92,12 @@ func (provisioner *Provisioner) GenerateHostList(machines *[]plugin.VBox) {
 
 	if provisioner.Err != nil { return }
 
-	provisionersDir := provisioner.Env.Config.Dirs.AssetsFull
+	provisionersDir := provisioner.Env.Config.Dirs.ProvisionersFull
 	binDir := provisioner.Env.Config.Dirs.BinFull
 
 	hostISO = fmt.Sprintf("%s/%s", provisionersDir, "ipxe.iso")
+
+
 
 	var hosts = []plugin.VBox{}
 
