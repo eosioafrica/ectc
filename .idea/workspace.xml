@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="053d6a59-772f-4ea9-bd0a-547638e9796a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecte.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ecte/ecte.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecte_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ecte/ecte_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +16,7 @@
       <file leaf-file-name="ecte.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/ecte.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-585">
+            <state>
               <caret column="12" selection-start-column="8" selection-end-column="12" />
             </state>
           </provider>
@@ -52,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="122">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
                 <element signature="e#14#90#0" expanded="true" />
               </folding>
@@ -64,14 +61,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="521">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ecte_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ecte/ecte_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-              <folding>
-                <element signature="e#19#71#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -129,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/terraform/modules/server/master/matchbox.tf" />
         <option value="$PROJECT_DIR$/assets/scripts/provision.sh" />
         <option value="$PROJECT_DIR$/../assets/terraform/modules/ignition/users/user.tpl" />
         <option value="$PROJECT_DIR$/../assets/Vagrantfile" />
@@ -180,6 +182,7 @@
         <option value="$PROJECT_DIR$/../ecte_test.go" />
         <option value="$PROJECT_DIR$/../ecte/ecte_test.go" />
         <option value="$PROJECT_DIR$/../main.go" />
+        <option value="$PROJECT_DIR$/../README.md" />
       </list>
     </option>
   </component>
@@ -204,6 +207,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ecte" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -215,27 +229,6 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="ecte" type="cbb8eebc:String" user="ecte" />
               <item name="ecte" type="cbb8eebc:String" user="ecte" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecte" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecte" type="462c0819:PsiDirectoryNode" />
-              <item name="ecte" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecte" type="462c0819:PsiDirectoryNode" />
-              <item name="environment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -379,8 +372,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.264166" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26895452" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50039905" side_tool="true" weight="0.32189542" />
       <window_info anchor="right" id="Database" order="3" />
@@ -388,7 +382,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35573772" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49960095" visible="true" weight="0.4180328" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49960095" weight="0.41666666" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3180328" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -432,13 +426,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../ecte/ecte.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="73" column="27" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../provision/provision.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1485">
@@ -568,20 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
           <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!block;n#SetSourcePath#0" />
-            <element signature="n#!!block;n#CreateUser#0" />
-            <element signature="n#!!block;n#RemoveUser#0" />
-            <element signature="n#!!block;n#CreateGroup#0" />
-            <element signature="n#!!block;n#RemoveGroup#0" />
-            <element signature="n#!!block;n#AddUserToGroup#0" />
-            <element signature="n#!!block;n#AddUserToSudoers#0" />
-            <element signature="n#!!block;n#RemoveDirectory#0" />
-            <element signature="n#!!block;n#DestroyEnvironment#0" />
-            <element signature="n#!!block;n#RunCombinedError#0" />
-            <element signature="n#!!block;n#Run#0" />
-            <element signature="n#!!block;n#checkIfSudoUser#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -589,9 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding>
-            <element signature="e#26#175#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,9 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="e#19#76#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -670,28 +637,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/ecte.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-585">
+        <state>
           <caret column="12" selection-start-column="8" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ecte/ecte_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="e#19#71#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        <state relative-caret-position="122">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="e#14#90#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>

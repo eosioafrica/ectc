@@ -27,5 +27,12 @@ Virtualbox for machines. Consul for consensus.
 
 5. Pray. hehehehe!
 
-6. If all successful run VirtualBox as sudo and all the machines will be there. 
+6. If all successful run VirtualBox as sudo and all the machines will be there.
+
+### Task list
+
+- [ ] Change provisioner to CoreOS. Downloads are too big and takes too long to setup. A docker image would work better.
+- [ ] Enable EOS systemd service
+- [ ] Change consul to handle block.one HA switch
+
 
