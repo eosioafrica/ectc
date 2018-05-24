@@ -8,5 +8,7 @@ Virtualbox for machines. Consul for consensus.
 
 2 * EOS Producers nodes (Runs CoreOS. Eos runs on docker, at startup. Consul clients connected to server cluster)
 
+1 * Private network
+
 
 
