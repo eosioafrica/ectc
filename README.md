@@ -1,0 +1,31 @@
+Automates the creation of a emulated cluster environment for EOS.IO high availabity. The purpose is to aid the development of a native high availability solution for EOS.IO.
+
+Virtualbox for machines. Consul for consensus.
+
+1 * Provisioner (Runs Ubuntu 16.04. Stores full provisioning data for cluster. Allows nodes to provision fully with MAC address). This means that, at deploy, iPXE will be suffecient to maintain the booting of cluster nodes. All node setup will reside on this machine(s)
+
+3 * Consul cluster server nodes (Runs CoreOS. Producer election and nodeos health checks)
+
+2 * EOS Producers nodes (Runs CoreOS. Eos runs on docker, at startup. Consul clients connected to server cluster)
+
+1 * Private network
+
+***Instructions***
+
+- On Ubuntu 18.04. Other distros should run too.
+- Need 6 Gigs of RAM to run the entire cluster. The point of this exercise will be made by just 3 Gigs. Run one of each category.
+- I am forgetting one more thing. Must not be important!!! Moving on...
+
+
+1 . [Install VirtualBox and Vagrant. Follow this tutorial.](http://www.codebind.com/linux-tutorials/install-vagrant-ubuntu-18-04-lts-linux/)
+
+2. [Install golang from this script] (https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh)
+
+3. git clone github.com/eosioafrica/ectc
+
+4. Inside the project folder run as sudo (sorry!) : {sudo go run main.go}
+
+5. Pray. hehehehe!
+
+6. If all successful run VirtualBox as sudo and all the machines will be there. 
+
