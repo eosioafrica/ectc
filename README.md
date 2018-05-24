@@ -10,5 +10,22 @@ Virtualbox for machines. Consul for consensus.
 
 1 * Private network
 
+***Instructions***
 
+- On Ubuntu 18.04. Other distros should run too.
+- Need 6 Gigs of RAM to run the entire cluster. The point of this exercise will be made by just 3 Gigs. Run one of each category.
+- I am forgetting one more thing. Must not be important!!! Moving on...
+
+
+1 . [Install VirtualBox and Vagrant. Follow this tutorial.](http://www.codebind.com/linux-tutorials/install-vagrant-ubuntu-18-04-lts-linux/)
+
+2. [Install golang from this script] (https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh)
+
+3. git clone github.com/eosioafrica/ectc
+
+4. Inside the project folder run as sudo (sorry!) : {sudo go run main.go}
+
+5. Pray. hehehehe!
+
+6. If all successful run VirtualBox as sudo and all the machines will be there. 
 
