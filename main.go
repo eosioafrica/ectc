@@ -1,37 +1,20 @@
-package ecte
+package main
 
 import (
-
-	"github.com/eosioafrica/ecte/environment"
-	"fmt"
-	"github.com/eosioafrica/ecte/plugin"
+	"github.com/sirupsen/logrus"
+	"github.com/eosioafrica/ecte/ecte"
 )
-
-var env environment.Environment
-
-
-
 
 func main() {
 
-	dir := "/home/khosi/go/src/github.com/eosioafrica/environment/assets/provisioners"
+	ecte := ecte.New()
 
-	vagrant := plugin.Vag{
+	ecte.Run()
 
-		Path: dir,
+	if ecte.Err != nil {
+
+		logrus.Error("Ooooops! ", ecte.Err)
 	}
-
-	vagrant.Provision()
-
-	if vagrant.Err != nil {
-
-		fmt.Println(vagrant.Err)
-		return
-	}
-
-
-	fmt.Println("Cluster provisioning has been successful.............")
-
 }
 
 

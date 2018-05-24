@@ -1,13 +1,12 @@
-package ecte_test
+package ecte
 
 import (
 	"testing"
-	"github.com/eosioafrica/ecte"
 )
 
 func TestRun(t *testing.T) {
 
-	e := ecte.New()
+	e := New()
 
 	e.Run()
 
