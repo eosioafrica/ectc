@@ -36,5 +36,7 @@ Virtualbox for machines. Consul for consensus.
 - [ ] Change provisioner to CoreOS. Downloads are too big and takes too long to setup. A docker image would work better.
 - [ ] Enable EOS systemd service
 - [ ] Change consul to handle block.one HA switch
+- [ ] Refactor code for composability. For example, consul must be replaceable by etcd.
+
 
 
