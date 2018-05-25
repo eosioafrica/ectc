@@ -1,5 +1,3 @@
-Automates the creation of a emulated cluster environment for EOS.IO high availabity. The purpose is to aid the development of a native high availability solution for EOS.IO.
-
 ***The key idea behind this project is to create easy to install and repeatable testing and development environments for the EOS.IO community. If we have an less than overly onerous test environment, we will be able to get as many people testing all the new features that will be added to the ecosystem.***
 
 Virtualbox for machines. Consul for consensus.
