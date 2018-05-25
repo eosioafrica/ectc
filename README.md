@@ -27,7 +27,7 @@ Virtualbox for machines. Consul for consensus.
 
 5. Inside the project folder run as sudo (sorry!) : {sudo go run main.go}
 
-6. Pray. hehehehe!
+6. Sit back. hehehehe!
 
 7. If all successful run VirtualBox as sudo and all the machines will be there.
 
