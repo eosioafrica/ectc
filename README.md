@@ -1,4 +1,4 @@
-***The key idea behind this project is to create easy to install and repeatable testing and development environments for the EOS.IO community. If we have a less than overly onerous test environment, we will be able to get as many people testing all the new features that will be added to the ecosystem.***
+***The key idea behind this project is to create easy to install and repeatable testing and development environments for the EOS.IO community. If we have a less than overly onerous test environment, we will be able to get as many people testing all the new features that will be added to the ecosystem. The software will be natively built for EOS and the project shall have no philosophical ambiguity on that front.***
 
 Virtualbox for machines. Consul for consensus.
 
