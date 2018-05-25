@@ -37,6 +37,7 @@ Virtualbox for machines. Consul for consensus.
 - [ ] Enable EOS systemd service
 - [ ] Change consul to handle block.one HA switch
 - [ ] Refactor code for composability. For example, consul must be replaceable by etcd.
+- [ ] Add CLI.
 
 
 
