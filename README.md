@@ -12,7 +12,7 @@ Virtualbox for machines. Consul for consensus.
 
 ***Instructions***
 
-- On Ubuntu 18.04. Other distros should run too.
+- On Ubuntu 18.04. 
 - Need 6 Gigs of RAM to run the entire cluster. The point of this exercise will be made by just 3 Gigs. Run one of each category.
 - I am forgetting one more thing. Must not be important!!! Moving on...
 
