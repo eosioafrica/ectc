@@ -23,11 +23,13 @@ Virtualbox for machines. Consul for consensus.
 
 3. git clone github.com/eosioafrica/ectc
 
-4. Inside the project folder run as sudo (sorry!) : {sudo go run main.go}
+4. Add user {ecte}. No special priviledges needed. 
 
-5. Pray. hehehehe!
+5. Inside the project folder run as sudo (sorry!) : {sudo go run main.go}
 
-6. If all successful run VirtualBox as sudo and all the machines will be there.
+6. Pray. hehehehe!
+
+7. If all successful run VirtualBox as sudo and all the machines will be there.
 
 ### Task list
 
