@@ -7,6 +7,7 @@ import (
 	"os"
 	"gopkg.in/src-d/go-git.v4"
 	"github.com/eosioafrica/ecte/utils"
+	"github.com/sirupsen/logrus"
 )
 
 type Seed struct {
@@ -52,7 +53,7 @@ func (seeder *Seeder) StartSeed (){
 
 	err := v.ReadInConfig()
 	if err != nil {
-		fmt.Println("EcteSeed not found.")
+		fmt.Println("EcteSeed not found. Please ensure the file is in your main exec dir. If running a test, run the test on the main project dir")
 		panic(err)
 	}
 
@@ -64,7 +65,6 @@ func (seeder *Seeder) StartSeed (){
 }
 
 // Returns an error object  and the create assets dir.
-
 func (seeder *Seeder) Seed () error  {
 
 	seeder.StartSeed()
@@ -98,6 +98,8 @@ func (seeder *Seeder) DoGitPull(){
 
 	if seeder.Err != nil { return }
 
+	logrus.Info("Downloading seed information from ", SeedConfig.Seed.Git)
+
 	_, err := git.PlainClone(seeder.Config.Destination, false, &git.CloneOptions{
 		URL:      SeedConfig.Seed.Git,
 		Progress: os.Stdout,
@@ -110,4 +112,3 @@ func (seeder *Seeder) DoGitPull(){
 
 	return
 }
-

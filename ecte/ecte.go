@@ -5,9 +5,9 @@ import (
 	"github.com/eosioafrica/ecte/environment"
 	"github.com/eosioafrica/ecte/seed"
 	"github.com/eosioafrica/ecte/provision"
+	"github.com/sirupsen/logrus"
 	"os"
 	"fmt"
-	"github.com/sirupsen/logrus"
 )
 
 
@@ -30,12 +30,13 @@ func New () *Ecte{
 	}
 }
 
-
+/*
+Retrieve installation asset data from a git repo. Typically, the repo must contain amongst others,
+configuration file, vagrant file for the provisioner, matchbox and terraform assets.
+*/
 func (ecte *Ecte) Seed (){
 
 	if ecte.Err != nil { return }
-
-	logrus.Info("Downloading seed information.")
 
 	pwd, err := os.Getwd()
 	if err != nil {
@@ -59,7 +60,7 @@ func (ecte *Ecte) CreateEnvironment (){
 
 	ecte.Err = ecte.Environ.Create(ecte.Seeder.AppDirCreated)
 
-	if ecte.Err ==nil { logrus.Info("New environment created at .", ecte.Seeder.AppDirCreated) }
+	if ecte.Err == nil { logrus.Info("New environment created at .", ecte.Seeder.AppDirCreated) }
 
 }
 
@@ -75,7 +76,7 @@ func (ecte *Ecte) Provision (){
 
 	ecte.Err = ecte.Provisioner.Err
 
-	if ecte.Err ==nil { logrus.Info("Successfully provisioned virtual machines.") }
+	if ecte.Err == nil { logrus.Info("Successfully provisioned virtual machines.") }
 }
 
 func (ecte *Ecte) Run() {

@@ -1,19 +1,29 @@
 package main
 
 import (
+	"github.com/eosioafrica/ecte/cmd"
+	"runtime"
+	"os"
 	"github.com/sirupsen/logrus"
-	"github.com/eosioafrica/ecte/ecte"
 )
 
 func main() {
 
-	ecte := ecte.New()
+	checkOS()
 
-	ecte.Run()
+	cmd.RootCmd.AddCommand(cmd.ProvisionCmd)
+	cmd.RootCmd.AddCommand(cmd.InitCmd)
+	cmd.RootCmd.AddCommand(cmd.CleanupCmd)
+	cmd.Execute()
+}
 
-	if ecte.Err != nil {
+func checkOS() {
 
-		logrus.Error("Ooooops! ", ecte.Err)
+	if runtime.GOOS != "linux" {
+
+		logrus.Warning("The program ecte only supports linux.")
+		logrus.Warning("Exiting... ")
+		os.Exit(-1)
 	}
 }
 

@@ -53,7 +53,7 @@ func (env *Environment) Create (sourcePath string) error {
 
 	env.CreateAppDirectories()
 
-	//env.CreateUser(env.Config.App.User)
+	env.CreateUser(env.Config.App.User)
 
 	//env.CreateGroup(env.Config.App.User)
 
